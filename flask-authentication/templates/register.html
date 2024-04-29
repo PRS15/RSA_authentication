@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 h-screen flex justify-center items-center">
+    <div class="w-full max-w-md bg-white rounded-lg shadow-md p-8">
+        <h1 class="text-3xl mb-6 text-center font-semibold text-gray-800">Register</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="bg-green-500 text-white p-3 mb-6 rounded">
+                    {% for message in messages %}
+                        <div>{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form class="space-y-4" method="POST">
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="username">Username</label>
+                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="username" name="username" type="text" required>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700" for="password">Password</label>
+                <input class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50" id="password" name="password" type="password" required>
+            </div>
+            <div>
+                <button class="w-full flex justify-center items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" type="submit">Register</button>
+            </div>
+        </form>
+        <p class="mt-4 text-center text-sm text-gray-600">Already have an account? <a class="font-medium text-blue-500 hover:text-blue-600" href="{{ url_for('login') }}">Log in here</a>.</p>
+    </div>
+</body>
+</html>
